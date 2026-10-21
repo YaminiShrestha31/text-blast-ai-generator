@@ -10,12 +10,7 @@ Pick ONE LLM provider (default is Gemini, which has a free tier).
 # Option A – Google Gemini (free): get a key at https://aistudio.google.com/apikey
 export GEMINI_API_KEY=your_key
 
-# Option B – Ollama (free, fully local): install from ollama.com, then `ollama pull llama3.2`
-export LLM_PROVIDER=ollama
 
-# Option C – Anthropic Claude (paid)
-export LLM_PROVIDER=anthropic ANTHROPIC_API_KEY=your_key
-```
 ```bash
 # terminal 1 – backend (http://localhost:8080)
 cd backend && mvn spring-boot:run
