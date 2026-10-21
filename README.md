@@ -1,6 +1,6 @@
 # Text Blast – AI Content Generator
 
-React (Vite) UI + **Spring Boot 3 (Java 17)** backend. The backend calls a configurable LLM (Gemini / Ollama / Claude) to generate 3 SMS variants
+React (Vite) UI + **Spring Boot 3 (Java 17)** backend. The backend calls a configurable LLM (Gemini) to generate 3 SMS variants
 from campaign type, tone, length and emoji options. API keys stay on the server.
 
 ## Run
@@ -22,7 +22,7 @@ Tests: `cd backend && mvn test`
 
 ## Design
 `ContentService` builds the prompt and post-processes results; it depends only on the `LlmClient` interface.
-`GeminiLlmClient`, `OllamaLlmClient` and `AnthropicLlmClient` implement it, and `llm.provider` selects one.
+`GeminiLlmClient` implement it, and `llm.provider` selects one.
 
 ## API
 `POST /api/generate`
@@ -34,4 +34,4 @@ Returns `{ "variants": ["...", "...", "..."] }`; errors return `{ "error": "..."
 ## Notes
 - Limit ON: model told to stay under 1600 chars, server hard-truncates as a safety net. OFF: UI shows an SMS cost disclaimer.
 - Emoji OFF: model told not to use emoji, server strips any that slip through.
-- Models are configurable via `GEMINI_MODEL`, `OLLAMA_MODEL`, `ANTHROPIC_MODEL`.
+- Models are configurable via `GEMINI_MODEL`.
